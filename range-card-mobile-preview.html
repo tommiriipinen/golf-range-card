@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Range Card — Rev. 4</title>
+<meta name="theme-color" content="#14432c">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+  :root{
+    --ink:#16201c; --ink-soft:#5b6862; --line:#dbe3de; --bg:#fbfcfb;
+    --card:#ffffff; --green:#14432c; --green-soft:#eef4f0; --amber:#8f4f22;
+    --amber-soft:#fbf3ed; --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ink:#e8efea; --ink-soft:#9aa8a1; --line:#2a3630; --bg:#111714;
+      --card:#18211d; --green:#7fc39b; --green-soft:#1c2a22; --amber:#e0a877;
+      --amber-soft:#2a211a;
+    }
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    padding-bottom:80px;
+  }
+
+  header{
+    background:var(--green); color:#fff; padding:18px 16px 14px;
+    padding-top:calc(18px + env(safe-area-inset-top));
+  }
+  @media (prefers-color-scheme: dark){ header{background:#0e1a14} }
+  header .kicker{font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:.72; font-weight:700}
+  header h1{margin:5px 0 0; font-size:25px; line-height:1.15; letter-spacing:-.4px}
+  header p{margin:7px 0 0; font-size:14px; opacity:.82; line-height:1.4}
+
+  nav{
+    position:sticky; top:0; z-index:20; background:var(--bg);
+    border-bottom:1px solid var(--line); padding:9px 10px;
+    overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;
+  }
+  nav a{
+    display:inline-block; padding:8px 14px; margin-right:6px; font-size:14px;
+    font-weight:600; text-decoration:none; color:var(--ink);
+    background:var(--green-soft); border-radius:999px;
+  }
+
+  main{padding:4px 12px 0}
+  section{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    margin:12px 0; overflow:hidden; scroll-margin-top:58px;
+  }
+  section>h2{
+    margin:0; padding:15px 16px; font-size:19px; letter-spacing:-.3px;
+    display:flex; align-items:center; gap:10px; cursor:pointer;
+  }
+  section>h2 .badge{
+    background:var(--green); color:#fff; font-size:12px; font-weight:800;
+    padding:3px 8px; border-radius:6px; letter-spacing:.5px; flex:none;
+  }
+  @media (prefers-color-scheme: dark){ section>h2 .badge{color:#0e1a14} }
+  section>h2 .chev{margin-left:auto; color:var(--ink-soft); font-size:15px; transition:transform .2s}
+  section.closed>h2 .chev{transform:rotate(-90deg)}
+  section.closed>.body{display:none}
+  .body{padding:0 16px 16px}
+
+  p{margin:0 0 11px}
+  .lede{color:var(--ink-soft); font-size:15px; margin-top:-4px}
+  strong{font-weight:700}
+
+  .note{background:var(--green-soft); border-radius:10px; padding:12px 13px; margin:12px 0; font-size:15px}
+  .note.warn{background:var(--amber-soft)}
+  .note .lbl{
+    display:block; font-size:11px; letter-spacing:1.4px; text-transform:uppercase;
+    font-weight:800; color:var(--green); margin-bottom:5px;
+  }
+  .note.warn .lbl{color:var(--amber)}
+  .note p:last-child{margin-bottom:0}
+
+  ol.proto{margin:0; padding-left:24px; font-size:15.5px}
+  ol.proto li{margin-bottom:9px}
+
+  /* drills */
+  .drill{
+    display:flex; gap:12px; align-items:flex-start; padding:13px 0;
+    border-top:1px solid var(--line); cursor:pointer;
+  }
+  .drill:first-of-type{border-top:none}
+  .drill input{
+    appearance:none; -webkit-appearance:none; flex:none; margin:2px 0 0;
+    width:26px; height:26px; border:2px solid var(--line); border-radius:7px;
+    background:transparent; position:relative;
+  }
+  .drill input:checked{background:var(--green); border-color:var(--green)}
+  .drill input:checked::after{
+    content:"✓"; position:absolute; inset:0; display:flex; align-items:center;
+    justify-content:center; color:#fff; font-size:16px; font-weight:800;
+  }
+  @media (prefers-color-scheme: dark){ .drill input:checked::after{color:#0e1a14} }
+  .drill .txt{flex:1; min-width:0}
+  .drill .nm{font-weight:700; font-size:15.5px}
+  .drill .nm .reps{
+    font-weight:700; font-size:12px; color:var(--green); background:var(--green-soft);
+    padding:2px 7px; border-radius:5px; margin-left:6px; white-space:nowrap;
+  }
+  .drill .ds{font-size:14.5px; color:var(--ink-soft); margin-top:3px; line-height:1.45}
+  .drill.done .nm, .drill.done .ds{opacity:.45; text-decoration:line-through}
+  .drill.done .nm .reps{text-decoration:none}
+
+  /* ladder */
+  .rung{
+    display:flex; gap:12px; padding:13px 0; border-top:1px solid var(--line); cursor:pointer;
+  }
+  .rung:first-of-type{border-top:none}
+  .rung input{
+    appearance:none;-webkit-appearance:none; flex:none; margin:2px 0 0; width:26px; height:26px;
+    border:2px solid var(--line); border-radius:50%; background:transparent; position:relative;
+  }
+  .rung input:checked{border-color:var(--green)}
+  .rung input:checked::after{
+    content:""; position:absolute; inset:5px; border-radius:50%; background:var(--green);
+  }
+  .rung .n{font-weight:800; color:var(--green); font-size:15px; flex:none; width:14px}
+  .rung.active{background:var(--green-soft); border-radius:10px; padding-left:10px; padding-right:10px}
+
+  /* scorecard */
+  table.score{width:100%; border-collapse:collapse; font-size:15px}
+  table.score td{padding:11px 0; border-top:1px solid var(--line); vertical-align:middle}
+  table.score tr:first-child td{border-top:none}
+  table.score .m{font-weight:600; padding-right:10px}
+  table.score .t{color:var(--ink-soft); font-size:13px; white-space:nowrap; padding-right:8px}
+  table.score input{
+    width:70px; padding:9px 8px; font-size:16px; text-align:center; font-weight:700;
+    border:1px solid var(--line); border-radius:9px; background:var(--bg); color:var(--ink);
+  }
+
+  ul.plain{margin:0 0 11px; padding-left:22px; font-size:15.5px}
+  ul.plain li{margin-bottom:6px}
+
+  .trap{padding:12px 0; border-top:1px solid var(--line)}
+  .trap:first-of-type{border-top:none}
+  .trap b{display:block; margin-bottom:3px}
+  .trap span{color:var(--ink-soft); font-size:14.5px}
+
+  footer{padding:20px 16px 30px; text-align:center}
+  .btn{
+    display:inline-block; padding:13px 20px; margin:5px; border-radius:11px;
+    font-size:15px; font-weight:700; text-decoration:none; border:1px solid var(--line);
+    color:var(--ink); background:var(--card); cursor:pointer;
+  }
+  .btn.primary{background:var(--green); color:#fff; border-color:var(--green)}
+  @media (prefers-color-scheme: dark){ .btn.primary{color:#0e1a14} }
+  .meta{color:var(--ink-soft); font-size:13px; margin-top:14px; line-height:1.5}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">Range Card · Rev. 4</div>
+  <h1>Posture, Transfer &amp; Low Point</h1>
+  <p>Tick drills as you go. Everything saves on this phone. Full detail is in the PDF at the bottom.</p>
+</header>
+
+<nav>
+  <a href="#proto">Protocol</a>
+  <a href="#a">A · Posture</a>
+  <a href="#b">B · Chipping</a>
+  <a href="#c">C · Low point</a>
+  <a href="#d">D · Driver</a>
+  <a href="#score">Scorecard</a>
+  <a href="#traps">Traps</a>
+</nav>
+
+<main>
+
+<section id="proto">
+  <h2><span class="badge">01</span>Transfer protocol<span class="chev">▾</span></h2>
+  <div class="body">
+    <p class="lede">Your practice swing already works. The ball takes it away. These six rules govern every block.</p>
+    <ol class="proto">
+      <li>Rehearsal and shot are <strong>one unit</strong>. Rehearse, step in, hit within five seconds.</li>
+      <li><strong>Same speed both times.</strong> A slower rehearsal is not a rehearsal.</li>
+      <li>Look 10&nbsp;cm <strong>ahead</strong> of the ball, or at its front edge. Never the back.</li>
+      <li>Grip pressure <strong>4 out of 10</strong> — check it is still 4 at the top.</li>
+      <li>Cut your time over the ball. Deliberation is tension, and tension is how the ball wins.</li>
+      <li><strong>Score the swing, not the shot.</strong> Rate 1–5 on how close it felt to the rehearsal. Ignore where it went.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="a">
+  <h2><span class="badge">A</span>Posture &amp; ball transfer<span class="chev">▾</span></h2>
+  <div class="body">
+    <p class="lede">First block every session, never cut. Face spray every fifth shot — strike location is the scoreboard, not ball flight.</p>
+    <div class="note">
+      <span class="lbl">Pick three, not nine</span>
+      <p>One of them is always the chair drill. If the rehearsal divot test came back clean, weight toward the transfer four.</p>
+    </div>
+    <div id="drills-a"></div>
+  </div>
+</section>
+
+<section id="b">
+  <h2><span class="badge">B</span>Chipping low point<span class="chev">▾</span></h2>
+  <div class="body">
+    <p class="lede">Narrow stance, feet slightly open, ball just back of centre, handle 2–4&nbsp;cm ahead, 70% pressure lead foot — and it stays there.</p>
+    <div id="drills-b"></div>
+    <div class="note">
+      <span class="lbl">Graduation</span>
+      <p>At 16 of 20 on the line drill, add the landing ladder — towels at 3, 6 and 9&nbsp;m, five balls each, random order.</p>
+    </div>
+  </div>
+</section>
+
+<section id="c">
+  <h2><span class="badge">C</span>Low point confirmation<span class="chev">▾</span></h2>
+  <div class="body">
+    <div class="note">
+      <span class="lbl">The goal, restated</span>
+      <p>Not a divot. <strong>A mark after the ball, however shallow.</strong> A bruise or a scuff counts. If the club leaves nothing, low point is still at or behind the ball. If it scuffs — you are done.</p>
+    </div>
+    <div class="note warn">
+      <span class="lbl">Grass only</span>
+      <p>On a mat the club skids, so contact 2&nbsp;cm behind the ball still flies. Mats cannot teach low point. Every drill in this block happens on grass.</p>
+    </div>
+
+    <p><strong>Desensitisation ladder.</strong> Tap your current rung. Move up only when the current one is boring — two or three sessions each.</p>
+    <div id="ladder"></div>
+
+    <p style="margin-top:14px"><strong>Throughout:</strong> grip pressure 4/10 — tight grips send shock into the wrists, soft ones absorb it. Discomfort is expected; <strong>pain is not</strong>. Stop and get it looked at.</p>
+
+    <p style="margin-top:16px"><strong>Drills, once the ladder is done</strong></p>
+    <div id="drills-c"></div>
+
+    <div class="note warn">
+      <span class="lbl">Before blaming your swing for spin</span>
+      <p>Check the stamped loft. A 23–24° hollow-body "5-iron" at 75&nbsp;mph will not stop quickly regardless of delivery. Cheaper levers: clean grooves, dry face and ball, centred strikes.</p>
+    </div>
+  </div>
+</section>
+
+<section id="d">
+  <h2><span class="badge">D</span>Driver<span class="chev">▾</span></h2>
+  <div class="body">
+    <p class="lede">Last block, always. Never in the same 20 minutes as iron low point work.</p>
+    <p><strong>Setup checklist</strong></p>
+    <ul class="plain">
+      <li>Ball off the lead heel</li>
+      <li>Half the ball above the crown</li>
+      <li>Stance wider than your irons</li>
+      <li>Trail shoulder lower, spine tilted away 5–10°</li>
+      <li>55% pressure trail foot, hands level with or behind the ball</li>
+      <li><strong>No forward press</strong></li>
+    </ul>
+    <div id="drills-d"></div>
+  </div>
+</section>
+
+<section id="score">
+  <h2><span class="badge">02</span>Scorecard<span class="chev">▾</span></h2>
+  <div class="body">
+    <p class="lede">Saves automatically. Carry distance is deliberately absent — it follows the strike.</p>
+    <table class="score"><tbody id="score-rows"></tbody></table>
+  </div>
+</section>
+
+<section id="traps" class="closed">
+  <h2><span class="badge">03</span>Traps<span class="chev">▾</span></h2>
+  <div class="body" id="traps-body"></div>
+</section>
+
+<section id="course">
+  <h2><span class="badge">04</span>On the course<span class="chev">▾</span></h2>
+  <div class="body">
+    <div class="note">
+      <span class="lbl">For now</span>
+      <p><strong>Take the divot question off the table entirely.</strong> Play the strike you have — your iron results are already good on average, and a shallow delivery is a legitimate way to play golf, not a fault to fix mid-round. The ladder belongs on the range. Manufacturing a divot on the course is exactly how you produce the duffs that started the flinch.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <a class="btn primary" href="range-card.pdf">Open print PDF</a>
+  <button class="btn" id="reset">Clear today's ticks</button>
+  <div class="meta">
+    Add to Home Screen for offline use.<br>
+    <span id="stamp"></span>
+  </div>
+</footer>
+
+<script>
+const DRILLS = {
+  a:[
+    ["Chair drill","20 + 10","Glutes against a chair back. The lead glute should press into it through impact, not leave it."],
+    ["Heel-bias exaggeration","20","Deliberately try to strike the heel side. Spray the face every five shots. You'll land in the middle."],
+    ["Lead heel planted","15","Half shots, lead heel down. Feel the hip clearing rotationally rather than jumping."],
+    ["Setup distance audit","every","One hand-width, grip butt to lead thigh, arms hanging."],
+    ["Down-the-line video","1","Same angle, same spot. Line drawn down your backside at address."],
+    ["Continuous swing","10","Pendulum without stopping. On the third pass a ball happens to be in the way."],
+    ["Tee-only ladder","30","Ten at a bare tee, ten at a teed ball, ten off turf."],
+    ["Eyes closed","10","Half shots, eyes shut once set. Strike usually improves immediately."],
+    ["Swish past the ball","15","Club upside down. Loudest swish must happen past where the ball would be."]
+  ],
+  b:[
+    ["Line drill","20","Chalk line, ball on it. Brush mark must start on or ahead of the line. Score every ball."],
+    ["Lead-arm only","15","Trail hand off entirely, 10 m chips. Flipping becomes impossible."],
+    ["Towel behind","15","Towel 10 cm behind the ball. Never touch it."],
+    ["Lead-foot only","15","Trail toe down for balance, nothing more."],
+    ["Freeze finish","10","Hold the impact position three seconds and look at the shaft."]
+  ],
+  c:[
+    ["Mark check","10 each","Off grass. Log mark / no mark every shot. 9-iron, then 8, then 7. Binary and honest."],
+    ["Line drill on grass","15","Chalk line, ball on it. Mark must start on or ahead of the line."],
+    ["Punch shots","10","Waist-high back, chest-high through. Reliably leaves a mark."],
+    ["Step drill","15","Feet together, step onto the lead foot as the club changes direction. 8-iron."],
+    ["Feet together","10","Fuller swings, feet touching. Centres the strike."]
+  ],
+  d:[
+    ["Tee-ahead","15","Second tee 20 cm ahead, 1 cm showing. Don't clip it."],
+    ["High-tee strike","15","Full ball above the crown. Strike the upper half of the face."],
+    ["Hold-off 9-to-3","15","Glove logo at the target past impact. Toe does not roll over the heel."],
+    ["Start-line gate","10","Gate 4 m ahead, set so the ball must start at or right of the target."],
+    ["Grip audit","every","Lead hand two knuckles, trail palm facing the target."]
+  ]
+};
+
+const LADDER = [
+  ["Softest, dampest turf. Short iron, half swings, <b>no ball</b> — just brush the grass. 20 reps.","Turf contact with zero consequence."],
+  ["Deliberate fat shots at 50% speed. Aim 3 cm behind the ball on purpose. Ten of them.","<b>The key rung.</b> Proves turf contact does not hurt. Do not skip it."],
+  ["Repeat rung 2 at 70%, then 85%, across separate sessions.","Creeps speed back without re-triggering the flinch."],
+  ["Ball on a low tee on grass. Normal 9-irons, marking the turf past the tee.","Removes fat-shot risk while you practise marking turf."],
+  ["Ball on turf. 9-iron, then 8, then 7. Check for a mark every shot.","Normal golf, with the fear disarmed."]
+];
+
+const SCORE = [
+  ["Face strike, heel–toe spread","≤10 mm"],
+  ["Face strike, height spread","≤10 mm"],
+  ["Chair contact retained (of 10)","9"],
+  ["Swing-match rating (1–5)","4.0+"],
+  ["Rehearsal-paired shots (of 20)","20"],
+  ["Chip line drill (of 20)","18"],
+  ["Mark after ball, 9-iron (of 10)","9"],
+  ["Mark after ball, 7-iron (of 10)","8"],
+  ["Driver angle of attack","+1 to +3°"],
+  ["Driver spin","2600–3000"],
+  ["Driver face-to-path","−1 to +2"]
+];
+
+const TRAPS = [
+  ["Scoring the shot instead of the swing","Judging by ball flight is the outcome-focus that lets the ball hijack the swing. Rate the feel, walk away, check the face spray later."],
+  ["A 70% practice swing","A slower rehearsal bottoms out correctly for reasons unrelated to your real swing. Full speed or don't count it."],
+  ["Standing over the ball deliberating","Every extra second raises grip pressure and re-aims your intent at the ball."],
+  ["Chasing divot depth","Depth is a by-product of your natural attack angle, not a skill. A mark after the ball is a correct strike."],
+  ["Practising low point on mats","The club skids. Mats will tell you it's solved when it isn't."],
+  ["Blaming your swing for iron spin","Check the loft on the club first."],
+  ["Pushing through wrist pain","One painful session rebuilds the flinch faster than a month of drills removes it."],
+  ["Trying to stop the lead leg extending","Kills speed you can't spare at 87 mph. The pelvis goes back and away, not toward the ball."],
+  ["Standing closer to cure toe strikes","Treats the symptom and usually worsens early extension."],
+  ["Bending the lie angles now","You'd be fitting irons to a delivery you're actively changing."],
+  ["\"Hitting down\" by chopping","Steepening with the hands moves low point backwards. Pressure and rotation, never arms."],
+  ["Driver first, or driver when tired","Early extension and the closed face both worsen under fatigue."],
+  ["All block practice, never random","If you never randomise, none of it survives the first tee."],
+  ["Letting soft turf flatter you","Wet ground lets a fat strike go somewhere respectable. Judge the mark, not the result."]
+];
+
+const K = "grc.v4.";
+const load = k => { try { return JSON.parse(localStorage.getItem(K+k)) || {}; } catch(e){ return {}; } };
+const save = (k,v) => { try { localStorage.setItem(K+k, JSON.stringify(v)); } catch(e){} };
+
+let checks = load("checks"), scores = load("score"), rung = load("rung").n || 0;
+
+function drillRow(block, i, [nm, reps, ds]){
+  const id = block+i, on = !!checks[id];
+  const el = document.createElement("label");
+  el.className = "drill" + (on ? " done" : "");
+  el.innerHTML = `<input type="checkbox" ${on?"checked":""}>
+    <span class="txt"><span class="nm">${nm}<span class="reps">${reps}</span></span>
+    <span class="ds">${ds}</span></span>`;
+  el.querySelector("input").addEventListener("change", e => {
+    checks[id] = e.target.checked; save("checks", checks);
+    el.classList.toggle("done", e.target.checked);
+  });
+  return el;
+}
+
+for (const b of ["a","b","c","d"]){
+  const host = document.getElementById("drills-"+b);
+  DRILLS[b].forEach((d,i) => host.appendChild(drillRow(b,i,d)));
+}
+
+const ladderHost = document.getElementById("ladder");
+function paintLadder(){
+  ladderHost.innerHTML = "";
+  LADDER.forEach(([what,why],i) => {
+    const n = i+1, active = rung === n;
+    const el = document.createElement("label");
+    el.className = "rung" + (active ? " active" : "");
+    el.innerHTML = `<input type="radio" name="rung" ${active?"checked":""}>
+      <span class="n">${n}</span>
+      <span class="txt"><span class="nm" style="font-weight:600">${what}</span>
+      <span class="ds">${why}</span></span>`;
+    el.querySelector("input").addEventListener("change", () => {
+      rung = n; save("rung", {n}); paintLadder();
+    });
+    ladderHost.appendChild(el);
+  });
+}
+paintLadder();
+
+const rows = document.getElementById("score-rows");
+SCORE.forEach(([m,t],i) => {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `<td class="m">${m}</td><td class="t">${t}</td>
+    <td style="text-align:right"><input type="text" inputmode="decimal" value="${scores[i]||""}"></td>`;
+  tr.querySelector("input").addEventListener("input", e => {
+    scores[i] = e.target.value; save("score", scores);
+  });
+  rows.appendChild(tr);
+});
+
+const tb = document.getElementById("traps-body");
+TRAPS.forEach(([t,w]) => {
+  const d = document.createElement("div");
+  d.className = "trap";
+  d.innerHTML = `<b>${t}</b><span>${w}</span>`;
+  tb.appendChild(d);
+});
+
+document.querySelectorAll("section > h2").forEach(h => {
+  h.addEventListener("click", () => h.parentElement.classList.toggle("closed"));
+});
+
+document.getElementById("reset").addEventListener("click", () => {
+  if (!confirm("Clear all drill ticks? Scorecard and ladder rung are kept.")) return;
+  checks = {}; save("checks", checks);
+  document.querySelectorAll(".drill input").forEach(i => { i.checked = false; i.closest(".drill").classList.remove("done"); });
+});
+
+document.getElementById("stamp").textContent = "Built " + document.documentElement.dataset.built;
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(()=>{}));
+}
+</script>
+</body>
+</html>
