@@ -6,6 +6,7 @@
 <title>Range Card — Rev. 5</title>
 <meta name="theme-color" content="#14432c">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -191,7 +192,8 @@
   <a href="#dv">★ Driver plan</a>
   <a href="#dva">★A · Launch</a>
   <a href="#dvb">★B · Speed</a>
-  <a href="#dvt">★ Targets</a>
+  <a href="#dvt">★T · Targets</a>
+  <a href="#dvn">★N · Caveats</a>
   <a href="#proto">Protocol</a>
   <a href="#a">A · Posture</a>
   <a href="#b">B · Chipping</a>
@@ -304,14 +306,19 @@
       <table class="tbl">
         <thead><tr><th>Set</th><th>Implement</th><th>Reps</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td>Light</td><td>6 dom. + 6 non-dom.</td></tr>
-          <tr><td>2</td><td>Medium</td><td>6 dom. + 6 non-dom.</td></tr>
-          <tr><td>3</td><td>Heavy</td><td>6 dom. + 6 non-dom.</td></tr>
+          <tr><td>1</td><td>Light</td><td>6 dom. side + 6 opposite</td></tr>
+          <tr><td>2</td><td>Medium</td><td>6 dom. side + 6 opposite</td></tr>
+          <tr><td>3</td><td>Heavy</td><td>6 dom. side + 6 opposite</td></tr>
           <tr><td>4</td><td>Driver</td><td>3 full effort, no ball</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="shape">Non-dominant reps are most of where the neuromuscular gain comes from. Do not skip them because they feel silly.</p>
+    <div class="note">
+      <span class="lbl">Dominant side, not dominant hand</span>
+      <p><strong>Both hands stay on the stick throughout.</strong> Dominant side is your normal right-handed swing. Non-dominant means turning around and swinging left-handed, mirroring the same motion as closely as you can. It is not a one-handed drill.</p>
+      <p>The left-handed swings will feel terrible for the first fortnight — poor balance, no sequencing, speeds well below your right side. Swing at full intent anyway and ignore the numbers on that side. Most of the neuromuscular gain lives there, and mirroring the reps also spreads the load across both sides of your spine instead of stacking twelve weeks of maximum-effort swings onto one.</p>
+      <p>Give yourself more room than feels necessary. Turning around and swinging the other way is the single most common way people put a speed stick through something.</p>
+    </div>
 
     <h3>Progression</h3>
     <div class="trap"><b>Weeks 4–6 · add instability</b><span>Same structure, but sets 1 and 2 become step-change swings: feet together, step into the lead foot during transition, swing through. Set 3 stays standard.</span></div>
@@ -320,7 +327,7 @@
 
     <div class="note">
       <span class="lbl">Measurement</span>
-      <p>Record max club speed on the <strong>light stick, dominant hand, set 1 rep 6</strong> every session. That is your speed metric. Do not use driver speed on the range as the tracking number — it is contaminated by whatever you are working on in Block A.</p>
+      <p>Record max club speed on the <strong>light stick, dominant side, set 1 rep 6</strong> every session. That is your speed metric. Do not use driver speed on the range as the tracking number — it is contaminated by whatever you are working on in Block A.</p>
     </div>
   </div>
 </section>
@@ -352,7 +359,7 @@
   </div>
 </section>
 
-<section id="dvn" class="closed">
+<section id="dvn">
   <h2><span class="badge">★N</span>Driver caveats<span class="chev">▾</span></h2>
   <div class="body">
     <div class="trap"><b>The 5 wood comparison is thin</b><span>Five shots across two sessions. Treat the 4.0 mph speed gap as directional, not as a measurement.</span></div>
@@ -534,7 +541,7 @@ const SCORE = [
   ["Driver landing angle","26 → 37°"],
   ["Driver club speed","86.5 → 90"],
   ["Driver carry","165 → 195 m"],
-  ["Speed stick, light / dominant","log every session"]
+  ["Speed stick, light / dominant side","log every session"]
 ];
 
 const TRAPS = [
@@ -545,7 +552,7 @@ const TRAPS = [
   ["Practising low point on mats","The club skids. Mats will tell you it's solved when it isn't."],
   ["Blaming your swing for iron spin","Check the loft on the club first."],
   ["Pushing through wrist pain","One painful session rebuilds the flinch faster than a month of drills removes it."],
-  ["Trying to stop the lead leg extending","Kills speed you can't spare at 87 mph. The pelvis goes back and away, not toward the ball."],
+  ["Trying to stop the lead leg extending","Kills speed you can't spare at 85 mph. The pelvis goes back and away, not toward the ball."],
   ["Standing closer to cure toe strikes","Treats the symptom and usually worsens early extension."],
   ["Bending the lie angles now","You'd be fitting irons to a delivery you're actively changing."],
   ["\"Hitting down\" by chopping","Steepening with the hands moves low point backwards. Pressure and rotation, never arms."],
@@ -553,9 +560,9 @@ const TRAPS = [
   ["Driver work when tired","Early extension and the closed face both worsen under fatigue, and a tired ascending strike turns into a stand-up."],
   ["Getting the ball up by standing up","Early extension is a cheap way to add height that costs strike and speed. Loft comes from the clubface, not from the pelvis."],
   ["Chasing face-to-path this block","It stays closed in the data and it is the smaller lever. Launch first; the two fixes interfere with each other."],
-  ["Using range driver speed as the speed number","It is contaminated by whatever Block A is doing to your swing. Track light stick, dominant hand, set 1 rep 6."],
+  ["Using range driver speed as the speed number","It is contaminated by whatever Block A is doing to your swing. Track light stick, dominant side, set 1 rep 6."],
   ["Overspeed swings on cold tissue","Six minutes of warm-up, every session, no exceptions. Ribs and lower backs are how people pay for skipping it."],
-  ["Skipping the non-dominant reps","They feel silly and they are where most of the neuromuscular gain lives."],
+  ["Skipping the non-dominant reps","Swinging left-handed feels silly and looks worse. It is still where most of the neuromuscular gain lives, and it is what stops twelve weeks of maximum-effort swings loading one side of your spine."],
   ["Changing ball and pattern at once","Two variables, no information. Test the ball on its own session."],
   ["All block practice, never random","If you never randomise, none of it survives the first tee."],
   ["Letting soft turf flatter you","Wet ground lets a fat strike go somewhere respectable. Judge the mark, not the result."]
