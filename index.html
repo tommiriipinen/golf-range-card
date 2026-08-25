@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-built="25 Aug 2026">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Range Card — Rev. 4</title>
+<title>Range Card — Rev. 5</title>
 <meta name="theme-color" content="#14432c">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -142,6 +142,27 @@
   ul.plain{margin:0 0 11px; padding-left:22px; font-size:15.5px}
   ul.plain li{margin-bottom:6px}
 
+  /* sub-heads and data tables */
+  section h3{
+    margin:20px 0 8px; font-size:12px; letter-spacing:1.4px; text-transform:uppercase;
+    font-weight:800; color:var(--green);
+  }
+  section h3:first-child{margin-top:4px}
+  .scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 0 12px}
+  table.tbl{width:100%; border-collapse:collapse; font-size:14.5px}
+  table.tbl th,table.tbl td{
+    padding:8px 0 8px 12px; border-top:1px solid var(--line);
+    text-align:right; white-space:nowrap;
+  }
+  table.tbl th{
+    border-top:none; font-size:11px; letter-spacing:1px; text-transform:uppercase;
+    font-weight:800; color:var(--ink-soft);
+  }
+  table.tbl th:first-child,table.tbl td:first-child{text-align:left; padding-left:0}
+  table.tbl tbody td:first-child{font-weight:600}
+  table.tbl td.goal{color:var(--green); font-weight:700}
+  .shape{font-size:14px; color:var(--ink-soft); margin:12px 0 2px}
+
   .trap{padding:12px 0; border-top:1px solid var(--line)}
   .trap:first-of-type{border-top:none}
   .trap b{display:block; margin-bottom:3px}
@@ -161,22 +182,185 @@
 <body>
 
 <header>
-  <div class="kicker">Range Card · Rev. 4</div>
-  <h1>Posture, Transfer &amp; Low Point</h1>
-  <p>Tick drills as you go. Everything saves on this phone. Full detail is in the PDF at the bottom.</p>
+  <div class="kicker">Range Card · Rev. 5</div>
+  <h1>Driver Launch, Posture &amp; Low Point</h1>
+  <p>Tick drills as you go. Everything saves on this phone. The driver block at the top replaces all earlier driver content.</p>
 </header>
 
 <nav>
+  <a href="#dv">★ Driver plan</a>
+  <a href="#dva">★A · Launch</a>
+  <a href="#dvb">★B · Speed</a>
+  <a href="#dvt">★ Targets</a>
   <a href="#proto">Protocol</a>
   <a href="#a">A · Posture</a>
   <a href="#b">B · Chipping</a>
   <a href="#c">C · Low point</a>
-  <a href="#d">D · Driver</a>
   <a href="#score">Scorecard</a>
   <a href="#traps">Traps</a>
 </nav>
 
 <main>
+
+<section id="dv">
+  <h2><span class="badge">★</span>Driver — launch first, speed second<span class="chev">▾</span></h2>
+  <div class="body">
+    <p class="lede">Twelve weeks. Launch work is weeks 1–8, speed work runs 1–12 in parallel on separate days. This replaces every earlier driver drill on this card.</p>
+
+    <div class="note warn">
+      <span class="lbl">The problem in one line</span>
+      <p>Spin loft of <strong>9.1°</strong> with a 10.5° head means you are <em>delofting</em> the driver at impact. The 5 wood delivers 13.2° of spin loft and out-carries the driver by 6.5&nbsp;m on 5.7&nbsp;mph less ball speed.</p>
+    </div>
+
+    <h3>Baseline · 63-shot slice, 6 May + 4 Jul 2026, n=15 drivers</h3>
+    <div class="scroll">
+      <table class="tbl">
+        <thead><tr><th>Metric</th><th>Baseline</th></tr></thead>
+        <tbody>
+          <tr><td>Club speed</td><td>85.4 mph</td></tr>
+          <tr><td>Ball speed</td><td>127.7 mph</td></tr>
+          <tr><td>Smash</td><td>1.495</td></tr>
+          <tr><td>Attack angle</td><td>+0.8°</td></tr>
+          <tr><td>Dynamic loft</td><td>9.9°</td></tr>
+          <tr><td>Spin loft</td><td>9.1°</td></tr>
+          <tr><td>Launch</td><td>8.6°</td></tr>
+          <tr><td>Spin</td><td>1862 rpm</td></tr>
+          <tr><td>Peak height</td><td>8.3 m</td></tr>
+          <tr><td>Landing angle</td><td>16.7°</td></tr>
+          <tr><td>Carry</td><td>143.0 m</td></tr>
+          <tr><td>Total</td><td>177.2 m</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <span class="lbl">Why launch is the priority</span>
+      <p>Within these 15 drives, carry correlates with launch at <strong>0.77</strong> and spin at 0.65, but with club speed at only 0.51. The longest drive of the set — 182.6&nbsp;m — was the highest-spin, highest-launch one. Not the fastest.</p>
+    </div>
+
+    <h3>A0 · Equipment, before drill one</h3>
+    <p class="lede">These are free yardage and they change the numbers you will be training against, so make them first.</p>
+    <ol class="proto">
+      <li><strong>Loft up the hosel.</strong> Elyte OptiFit — 10.5° to 11.5°, or 12° if it is available. Worth about 1° of dynamic loft and 150–200&nbsp;rpm immediately.</li>
+      <li><strong>Tee height.</strong> Tee so the equator of the ball sits level with the crown — roughly half the ball above the top line. Iron-ish tee height makes an ascending strike physically awkward.</li>
+      <li><strong>Ball position.</strong> Off the lead heel, genuinely forward — not “forward for you”. Alignment stick on the ground, perpendicular to the target line at your lead heel, for the first three sessions.</li>
+      <li><strong>Ball model — test, do not assume.</strong> TP5 sits on the low-spin end and you need spin. Put a sleeve of Pro V1 or Chrome Soft in the bag for one Trackman session and compare driver spin directly. Keep whichever wins. Never change ball model and swing pattern in the same session.</li>
+    </ol>
+    <div class="note warn">
+      <span class="lbl">Re-baseline before A1</span>
+      <p>Take a fresh Trackman baseline <em>after</em> those four. Equipment alone may move launch 1.5–2° and spin 300&nbsp;rpm, and you want to train against the real remaining gap.</p>
+    </div>
+  </div>
+</section>
+
+<section id="dva">
+  <h2><span class="badge">★A</span>Launch conditions · weeks 1–8<span class="chev">▾</span></h2>
+  <div class="body">
+    <p class="lede">The primary block. Twice a week per phase, never on a speed day. Gates below decide when you move on — not the calendar.</p>
+
+    <h3>A1 · Weeks 1–3 — build the ascending strike</h3>
+    <div class="note">
+      <span class="lbl">Goal</span>
+      <p>Attack angle from +0.8° to <strong>+2.5°</strong>, without losing centre-face contact.</p>
+    </div>
+    <div id="drills-dl1"></div>
+    <p class="shape">Session shape: 45 balls, about 35 minutes, twice a week. Never on a speed day.</p>
+
+    <h3>A2 · Weeks 4–6 — add dynamic loft</h3>
+    <div class="note">
+      <span class="lbl">Goal</span>
+      <p>Dynamic loft from ~10° to <strong>14°</strong>, spin loft to ~11.5°. Attack angle alone will not do it — raising AoA <em>reduces</em> spin loft, so dynamic loft has to climb faster than attack angle does.</p>
+    </div>
+    <div id="drills-dl2"></div>
+    <p class="shape">Session shape: 40 balls plus rehearsals, about 40 minutes, twice a week.</p>
+
+    <h3>A3 · Weeks 7–8 — consolidate under pressure</h3>
+    <div id="drills-dl3"></div>
+
+    <div class="note warn">
+      <span class="lbl">Gates</span>
+      <p>Do not advance A1 → A2 until attack angle averages <strong>≥ +2.0°</strong> across a 10-shot benchmark. Do not advance A2 → A3 until spin is <strong>≥ 2200 rpm on 6 of 10</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<section id="dvb">
+  <h2><span class="badge">★B</span>Speed training · weeks 1–12<span class="chev">▾</span></h2>
+  <div class="body">
+    <p class="lede">Separate days from Block A. Three sessions a week, non-consecutive, about 25 minutes. Speed days are speed days — no ball flight analysis, no swing thoughts, no scoring.</p>
+
+    <div class="note">
+      <span class="lbl">Equipment</span>
+      <p>A graduated speed-stick set — SuperSpeed or equivalent, light / medium / heavy. If you would rather not buy: an alignment stick works as the light implement and an upside-down driver gripped at the hosel as the medium, but the progression is much cruder and the results will be too.</p>
+    </div>
+
+    <div class="note warn">
+      <span class="lbl">Warm-up — 6 minutes, non-negotiable</span>
+      <p>Arm circles, trunk rotations, hip openers, then 10 slow half-swings with the medium stick building to 60%. Overspeed work on cold tissue is how people injure ribs and lower backs. If anything hurts, stop the session — not just the set.</p>
+    </div>
+
+    <h3>Weeks 1–3 · baseline protocol</h3>
+    <div class="scroll">
+      <table class="tbl">
+        <thead><tr><th>Set</th><th>Implement</th><th>Reps</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Light</td><td>6 dom. + 6 non-dom.</td></tr>
+          <tr><td>2</td><td>Medium</td><td>6 dom. + 6 non-dom.</td></tr>
+          <tr><td>3</td><td>Heavy</td><td>6 dom. + 6 non-dom.</td></tr>
+          <tr><td>4</td><td>Driver</td><td>3 full effort, no ball</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="shape">Non-dominant reps are most of where the neuromuscular gain comes from. Do not skip them because they feel silly.</p>
+
+    <h3>Progression</h3>
+    <div class="trap"><b>Weeks 4–6 · add instability</b><span>Same structure, but sets 1 and 2 become step-change swings: feet together, step into the lead foot during transition, swing through. Set 3 stays standard.</span></div>
+    <div class="trap"><b>Weeks 7–9 · add kneeling work</b><span>Sets 1 and 2 from both knees on a mat. Removes the ground push and forces the upper body to generate speed. Set 3 standard, set 4 goes to 5 driver swings.</span></div>
+    <div class="trap"><b>Weeks 10–12 · max effort</b><span>Full protocol, every rep at genuine maximum. Add a fifth set: 5 driver swings with a ball at full speed, accepting whatever happens to the ball. Record club speed on all five.</span></div>
+
+    <div class="note">
+      <span class="lbl">Measurement</span>
+      <p>Record max club speed on the <strong>light stick, dominant hand, set 1 rep 6</strong> every session. That is your speed metric. Do not use driver speed on the range as the tracking number — it is contaminated by whatever you are working on in Block A.</p>
+    </div>
+  </div>
+</section>
+
+<section id="dvt">
+  <h2><span class="badge">★T</span>Driver targets &amp; checkpoints<span class="chev">▾</span></h2>
+  <div class="body">
+    <p class="lede">Benchmark on Trackman every two weeks: 10 drivers, full routine, log all of the below. Numbers go in the scorecard.</p>
+    <div class="scroll">
+      <table class="tbl">
+        <thead><tr><th>Metric</th><th>Base</th><th>Wk 4</th><th>Wk 8</th><th>Wk 12</th></tr></thead>
+        <tbody>
+          <tr><td>Attack angle</td><td>+0.8°</td><td>+2.0°</td><td>+3.0°</td><td class="goal">+3.5°</td></tr>
+          <tr><td>Dynamic loft</td><td>9.9°</td><td>12.0°</td><td>14.0°</td><td class="goal">15.0°</td></tr>
+          <tr><td>Spin loft</td><td>9.1°</td><td>10.5°</td><td>11.5°</td><td class="goal">12.5°</td></tr>
+          <tr><td>Launch</td><td>8.6°</td><td>11.0°</td><td>12.5°</td><td class="goal">13.5°</td></tr>
+          <tr><td>Spin</td><td>1862</td><td>2100</td><td>2300</td><td class="goal">2450</td></tr>
+          <tr><td>Peak height</td><td>8.3 m</td><td>14 m</td><td>19 m</td><td class="goal">22 m</td></tr>
+          <tr><td>Landing angle</td><td>16.7°</td><td>26°</td><td>33°</td><td class="goal">37°</td></tr>
+          <tr><td>Club speed</td><td>85.4</td><td>86.5</td><td>88.0</td><td class="goal">90.0</td></tr>
+          <tr><td>Carry</td><td>143 m</td><td>165 m</td><td>182 m</td><td class="goal">195 m</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <span class="lbl">Expected split of the gain</span>
+      <p>Roughly <strong>45–50&nbsp;m from launch conditions</strong> and 12–18&nbsp;m from speed. If after week 8 the carry number has barely moved but launch and spin are on target, the problem is elsewhere and worth a fitting rather than more reps.</p>
+    </div>
+  </div>
+</section>
+
+<section id="dvn" class="closed">
+  <h2><span class="badge">★N</span>Driver caveats<span class="chev">▾</span></h2>
+  <div class="body">
+    <div class="trap"><b>The 5 wood comparison is thin</b><span>Five shots across two sessions. Treat the 4.0 mph speed gap as directional, not as a measurement.</span></div>
+    <div class="trap"><b>Spin may be estimated, not measured</b><span>If any baseline shots are virtual-range strokes, check the <code>reducedAccuracy</code> flag on the slice before treating 1862 rpm as gospel. If spin is estimated, re-baseline on a real range or a radar-confirmed session before committing to the A0 loft change.</span></div>
+    <div class="trap"><b>Block A works with your existing pattern, not against it</b><span>Early extension → low point behind the ball → thin high-face strikes. An ascending strike actually wants the low point behind the ball; what it does not want is the shaft lean. Watch that A1 does not quietly reintroduce early extension as a way of getting the ball higher.</span></div>
+    <div class="trap"><b>Leave face-to-path alone</b><span>It stays closed in this data and it is the smaller lever. Launch is the bigger one, and the two fixes interfere with each other.</span></div>
+  </div>
+</section>
 
 <section id="proto">
   <h2><span class="badge">01</span>Transfer protocol<span class="chev">▾</span></h2>
@@ -244,23 +428,6 @@
   </div>
 </section>
 
-<section id="d">
-  <h2><span class="badge">D</span>Driver<span class="chev">▾</span></h2>
-  <div class="body">
-    <p class="lede">Last block, always. Never in the same 20 minutes as iron low point work.</p>
-    <p><strong>Setup checklist</strong></p>
-    <ul class="plain">
-      <li>Ball off the lead heel</li>
-      <li>Half the ball above the crown</li>
-      <li>Stance wider than your irons</li>
-      <li>Trail shoulder lower, spine tilted away 5–10°</li>
-      <li>55% pressure trail foot, hands level with or behind the ball</li>
-      <li><strong>No forward press</strong></li>
-    </ul>
-    <div id="drills-d"></div>
-  </div>
-</section>
-
 <section id="score">
   <h2><span class="badge">02</span>Scorecard<span class="chev">▾</span></h2>
   <div class="body">
@@ -287,7 +454,7 @@
 </main>
 
 <footer>
-  <a class="btn primary" href="golf-range-card-rev4.pdf">Open print PDF</a>
+  <a class="btn primary" href="golf-range-card-rev4.pdf">Print PDF (rev. 4, irons)</a>
   <button class="btn" id="reset">Clear today's ticks</button>
   <div class="meta">
     Add to Home Screen for offline use.<br>
@@ -322,12 +489,22 @@ const DRILLS = {
     ["Step drill","15","Start with the feet together. As the club changes direction at the top, step onto the lead foot and swing through — 8-iron. The pressure shift becomes a transition move rather than something you try to add after the hands have already taken over."],
     ["Feet together","10","Fuller swings with the feet touching the whole time. This centres the strike and immediately exposes balance loss or a jump off the lead side. If you cannot stay in posture here, you will not stay in posture with a normal stance either."]
   ],
-  d:[
-    ["Tee-ahead","15","Push a second tee into the ground 20 cm ahead of the ball, only 1 cm showing. Hit the ball without clipping that tee. If you catch it, you are still hitting down — the iron low-point feel leaking onto the driver. The job is to miss it high, which is an upward attack."],
-    ["High-tee strike","15","Tee the ball so a full ball sits above the crown, then strike the upper half of the face. That combination produces the attack angle and launch you want together. A low-face hit on a high tee means you are still chopping at it."],
-    ["Hold-off 9-to-3","15","Half swings only. Through impact the glove logo points at the target and the toe does not roll over the heel. This is the closed-face leak — your biggest driver problem — and a delofted face is also why spin sits too low. Full swings only after these feel boring."],
-    ["Start-line gate","10","Two sticks forming a gate about 4 m ahead, set so the ball must start at the target or right of it. A pull-hook never makes it through. This stops the left miss at the start line instead of asking you to “hold on” through the ball."],
-    ["Grip audit","every","Lead hand shows two knuckles; trail palm faces the target. Check it before the first driver, not after a bad one. A strong grip shuts the face automatically, whatever the rest of the swing does, and no hold-off drill will outwork that."]
+  dl1:[
+    ["Tilt-and-hold setup","10","No ball. Set up, then add 5–8° of trail-side spine tilt so the lead shoulder sits visibly higher, and feel about 55% of your weight on the trail foot at address. Hold five seconds. This is a position you install before the swing starts, not a thought you carry into it."],
+    ["Forward-tee gate","15","Ball on a normal tee; a second tee pushed nearly flush into the turf about 20 cm ahead on the target line. The clubhead must miss the forward tee — clipping it means you are still descending. Start at 60% effort and stay there until you miss it ten in a row."],
+    ["Step-through finish","10","Full swing, then let the trail foot walk through past the lead foot after impact. This makes the pivot move left while the club exits up, which is the opposite of your early-extension pattern. If you cannot walk through, you stalled and stood up."],
+    ["Half-speed loft rehearsal","10","50% effort, trying to see the ball launch visibly higher than normal. You are calibrating a feel, not hitting shots. Ignore direction entirely — a high pull counts as a success here."]
+  ],
+  dl2:[
+    ["Handle-back impact feel","12","The feel is that the grip end has not run ahead of the clubhead at impact. Exaggerate it: try to feel the clubhead passing the hands before the ball. It will feel like a scoop and it will not be one. Check it on Trackman, never by feel."],
+    ["High-window shots","15","Pick a tree or a point on the range netting and try to launch the ball over it. Height is the only success criterion; where the ball finishes is not information today."],
+    ["Trail-hand-only swings","10","No ball, half speed, trail hand alone on the club. Keeps the trail wrist from flattening early into shaft lean — the move that quietly deletes your dynamic loft."],
+    ["Numbers-up full swings","15","Stand where you can see launch angle after every shot. Target 12°+. Say the number out loud before you look at it. Building the feel-to-real map is the whole point of the drill."]
+  ],
+  dl3:[
+    ["Nine-shot gate test","9","One ball at a time, full pre-shot routine, 60 seconds between. Pass = 6 of 9 at launch ≥ 12° and spin ≥ 2200 rpm. This is the scoring drill for the block."],
+    ["Alternating clubs","12","Driver, 5 wood, driver, 5 wood. The 5 wood already delivers the conditions you want, so you are borrowing its feel. Notice what changes between the two and take that difference back to the driver."],
+    ["Course-sim tee shots","10","Ten balls, each to a different imagined fairway width, alternating targets. No swing thoughts allowed. If the pattern survives this, it survives the first tee."]
   ]
 };
 
@@ -348,9 +525,16 @@ const SCORE = [
   ["Chip line drill (of 20)","18"],
   ["Mark after ball, 9-iron (of 10)","9"],
   ["Mark after ball, 7-iron (of 10)","8"],
-  ["Driver angle of attack","+1 to +3°"],
-  ["Driver spin","2600–3000"],
-  ["Driver face-to-path","−1 to +2"]
+  ["Driver attack angle","+2.0 → +3.5°"],
+  ["Driver dynamic loft","12 → 15°"],
+  ["Driver spin loft","10.5 → 12.5°"],
+  ["Driver launch","11 → 13.5°"],
+  ["Driver spin","2100 → 2450"],
+  ["Driver peak height","14 → 22 m"],
+  ["Driver landing angle","26 → 37°"],
+  ["Driver club speed","86.5 → 90"],
+  ["Driver carry","165 → 195 m"],
+  ["Speed stick, light / dominant","log every session"]
 ];
 
 const TRAPS = [
@@ -365,12 +549,19 @@ const TRAPS = [
   ["Standing closer to cure toe strikes","Treats the symptom and usually worsens early extension."],
   ["Bending the lie angles now","You'd be fitting irons to a delivery you're actively changing."],
   ["\"Hitting down\" by chopping","Steepening with the hands moves low point backwards. Pressure and rotation, never arms."],
-  ["Driver first, or driver when tired","Early extension and the closed face both worsen under fatigue."],
+  ["Mixing launch work and speed work","Block A and Block B never share a session. Overspeed swings leave nothing for a fine-motor change, and the two intents pull in opposite directions."],
+  ["Driver work when tired","Early extension and the closed face both worsen under fatigue, and a tired ascending strike turns into a stand-up."],
+  ["Getting the ball up by standing up","Early extension is a cheap way to add height that costs strike and speed. Loft comes from the clubface, not from the pelvis."],
+  ["Chasing face-to-path this block","It stays closed in the data and it is the smaller lever. Launch first; the two fixes interfere with each other."],
+  ["Using range driver speed as the speed number","It is contaminated by whatever Block A is doing to your swing. Track light stick, dominant hand, set 1 rep 6."],
+  ["Overspeed swings on cold tissue","Six minutes of warm-up, every session, no exceptions. Ribs and lower backs are how people pay for skipping it."],
+  ["Skipping the non-dominant reps","They feel silly and they are where most of the neuromuscular gain lives."],
+  ["Changing ball and pattern at once","Two variables, no information. Test the ball on its own session."],
   ["All block practice, never random","If you never randomise, none of it survives the first tee."],
   ["Letting soft turf flatter you","Wet ground lets a fat strike go somewhere respectable. Judge the mark, not the result."]
 ];
 
-const K = "grc.v4.";
+const K = "grc.v5.";
 const load = k => { try { return JSON.parse(localStorage.getItem(K+k)) || {}; } catch(e){ return {}; } };
 const save = (k,v) => { try { localStorage.setItem(K+k, JSON.stringify(v)); } catch(e){} };
 
@@ -390,7 +581,7 @@ function drillRow(block, i, [nm, reps, ds]){
   return el;
 }
 
-for (const b of ["a","b","c","d"]){
+for (const b of ["dl1","dl2","dl3","a","b","c"]){
   const host = document.getElementById("drills-"+b);
   DRILLS[b].forEach((d,i) => host.appendChild(drillRow(b,i,d)));
 }
